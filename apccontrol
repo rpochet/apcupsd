@@ -1,0 +1,1 @@
+python /etc/apcupsd/mqtt_events_publisher.py $1
