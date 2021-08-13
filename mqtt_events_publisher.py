@@ -9,6 +9,7 @@
 
 
 # Import package
+import sys
 import argparse
 import paho.mqtt.client as mqtt
 
@@ -18,6 +19,8 @@ MQTT_TOPIC = "gladys/master/device/apcups/"
 MQTT_PORT = 1883
 MQTT_KEEPALIVE_INTERVAL = 45
 
+print (sys.argv[1:]);
+
 # Read command line argument and Publish on MQTT Topic
 parser = argparse.ArgumentParser(description='APC UPS Event Messages')
 parser.add_argument('event_data')
@@ -26,11 +29,11 @@ MQTT_MSG = (args.event_data)
 
 # Define on_connect event Handler
 def on_connect(mosq, obj, rc):
-	print "Connected to MQTT Broker"
+	print ("Connected to MQTT Broker")
 
 # Define on_publish event Handler
 def on_publish(client, userdata, mid):
-	print "Message Published..."
+	print ("Message Published...")
 
 # Initiate MQTT Client
 mqttc = mqtt.Client()
@@ -40,6 +43,7 @@ mqttc.on_publish = on_publish
 mqttc.on_connect = on_connect
 
 # Connect with MQTT Broker
+mqttc.username_pw_set(MQTT_BROKER, MQTT_BROKER)
 mqttc.connect(MQTT_BROKER, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL) 
 
 # Publish message to MQTT Topic 
