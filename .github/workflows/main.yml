@@ -47,4 +47,4 @@ jobs:
           context: .
           push: true
           pull: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}:${{ github.event.inputs.tag }}
+          tags: ${{ secrets.DOCKERHUB_REPO }}:latest
