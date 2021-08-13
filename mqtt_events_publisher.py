@@ -15,8 +15,6 @@ import paho.mqtt.client as mqtt
 # Define Variables
 MQTT_BROKER = "iot.eclipse.org"
 MQTT_TOPIC = "Replace this string with your MQTT Topic"
-
-
 MQTT_PORT = 1883
 MQTT_KEEPALIVE_INTERVAL = 45
 
